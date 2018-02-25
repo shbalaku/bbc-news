@@ -10,8 +10,6 @@ module.exports = function (controller) {
 
         var api_uri = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey='+NEWS_API_KEY;
         request(api_uri, function (error, response, body) {
-          console.log('error:', error); // Print the error if one occurred
-          console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
           bot.reply(message, body.status);
         });
     });
