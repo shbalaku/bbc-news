@@ -10,7 +10,7 @@ module.exports = function (controller) {
 
         var api_uri = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey='+NEWS_API_KEY;
         request(api_uri, function (error, response, body) {
-          bot.reply(message, body.status);
+          bot.reply(message, body.status.toString());
         });
     });
 }
