@@ -13,8 +13,13 @@ module.exports = function (controller) {
           var obj = JSON.parse(body);
           var headlines = obj.articles;
           var headline_count = headlines.length;
-          var text = 'Number of headlines today = ' + headline_count.toString();
-          bot.reply(message, text);
+          var response = '**Headlines today**\n';
+          for (var i = 0; i < headline_count.length; i++) {
+            article = headlines[i];
+            response = response + '*' + article.title + '\n';
+          }
+
+          bot.reply(message, response);
         });
     });
 }
