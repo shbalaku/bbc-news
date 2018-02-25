@@ -10,8 +10,11 @@ module.exports = function (controller) {
 
         var api_uri = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey='+NEWS_API_KEY;
         request(api_uri, function (error, response, body) {
-          var obj = JSON.parse(body)
-          bot.reply(message, String(obj.status));
+          var obj = JSON.parse(body);
+          var headlines = obj.articles;
+          var headline_count = headlines.length;
+          var text = 'Number of headlines today = ' + headline_count.toString();
+          bot.reply(message, text);
         });
     });
 }
