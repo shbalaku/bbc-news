@@ -9,7 +9,11 @@ module.exports = function (controller) {
     controller.hears('headlines', 'direct_mention, direct_message', function (bot, message) {
 
         var api_uri = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey='+NEWS_API_KEY;
-
-        bot.reply(message, api_uri);
+        request(api_uri, function (error, response, body) {
+          console.log('error:', error); // Print the error if one occurred
+          console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+          console.log('body:', body); // Print the HTML for the Google homepage.
+          bot.reply(message, body);
+        });
     });
 }
