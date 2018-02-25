@@ -16,6 +16,7 @@ module.exports = function (controller) {
           var response = '**Headlines today**\n';
           for (var i = 0; i < headline_count.length; i++) {
             article = headlines[i];
+            console.log(article);
             response = response + '*' + article.title + '\n';
           }
 
