@@ -12,7 +12,7 @@ module.exports = function (controller) {
         request(api_uri, function (error, response, body) {
           var obj = JSON.parse(body);
           var headlines = obj.articles;
-          var response;
+          var response = '';
 
           for (var i = 0; i < headlines.length; i++) {
             article = headlines[i];
