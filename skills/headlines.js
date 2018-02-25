@@ -16,9 +16,8 @@ module.exports = function (controller) {
 
           for (var i = 0; i < headlines.length; i++) {
             article = headlines[i];
-            response = response + '* ' + '**' + article.title + '**' + '\n' + '    * ' + article.description + '\n';
+            response = response + '* ' + '**' + article.title + '**' + '\n' + '    * ' + article.description + '    _' + '(' + article.url +')_\n';
           }
-
           bot.reply(message, response);
         });
     });
