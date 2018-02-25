@@ -12,13 +12,15 @@ module.exports = function (controller) {
         request(api_uri, function (error, response, body) {
           var obj = JSON.parse(body);
           var headlines = obj.articles;
+          bot.reply(message, headlines);
           var headline_count = headlines.length;
           var response = '**Headlines today**\n';
+          /*
           for (var i = 0; i < headline_count.length; i++) {
             article = headlines[i];
             console.log(headlines);
             response = response + '*' + article.title + '\n';
-          }
+          }*/
 
           bot.reply(message, response);
         });
