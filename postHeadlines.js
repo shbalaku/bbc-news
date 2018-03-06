@@ -21,7 +21,7 @@ request(api_uri, function (error, response, body) {
   var email = "shbalaku@cisco.com";
   spark.messages.create({
     toPersonEmail: email,
-    text: response
+    markdown: response
   }, function (err, result) {
     if (err) console.error(err);
     console.log(result);
