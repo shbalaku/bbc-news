@@ -13,7 +13,7 @@ module.exports = function (controller) {
         client.connect(function(err) {
           if (err) throw err;
           // execute query
-          client.query('INSERT INTO subscribers VALUES $1;', [email], function(err) {
+          client.query('INSERT INTO subscribers VALUES ($1);', [email], function(err) {
             if (err) throw err;
             // end connection
             client.end(function(err) {
