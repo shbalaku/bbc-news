@@ -10,14 +10,13 @@ var date = methods.formatDate(d);
 var client = methods.createClient();
 var subscribers = [];
 var subscriber_no;
-var response = '';
 var api_uri = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey='+NEWS_API_KEY;
 
 // headlines request
 request(api_uri, function (error, response, body) {
   var obj = JSON.parse(body);
   var headlines = obj.articles;
-
+  var response = '';
   for (var i = 0; i < headlines.length; i++) {
     article = headlines[i];
     response = response + '* ' + '**' + article.title + '**' + '\n' + '    * ' + article.description + '\n    * _' + article.url +'_\n';
