@@ -1,7 +1,7 @@
 var request = require('request');
 var CiscoSpark = require('node-ciscospark');
 var spark = new CiscoSpark(process.env.SPARK_TOKEN);
-//var methods = require('./methods.js');
+var methods = require('./methods.js');
 
 // global variables
 var NEWS_API_KEY = process.env.NEWS_API_KEY;
