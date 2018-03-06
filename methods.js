@@ -1,6 +1,5 @@
 var now = new Date();
-//const { Client } = require('pg');
-//var Botkit = require('botkit');
+const { Client } = require('pg');
 
 var methods = {
   formatDate: function (date){
