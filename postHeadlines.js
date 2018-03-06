@@ -34,19 +34,18 @@ request(api_uri, function (error, response, body) {
       }
       client.end(function(err) {
         if (err) throw err;
+        // send headlines to subscribers through spark
+        for (var i = 0; i < subscriber_no; i++) {
+          var email = subscribers[i];
+          spark.messages.create({
+            toPersonEmail: email,
+            markdown: response
+          }, function (err, result) {
+            if (err) console.error(err);
+            //console.log(result);
+          });
+        }
       });
     });
   });
-
-  // send headlines to subscribers through spark
-  for (var i = 0; i < subscriber_no; i++) {
-    var email = subscribers[i];
-    spark.messages.create({
-      toPersonEmail: email,
-      markdown: response
-    }, function (err, result) {
-      if (err) console.error(err);
-      //console.log(result);
-    });
-  }
 });
