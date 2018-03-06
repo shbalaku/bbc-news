@@ -13,14 +13,24 @@ module.exports = function (controller) {
         client.connect(function(err) {
           if (err) throw err;
           // execute query
-          client.query('INSERT INTO subscribers VALUES ($1);', [email], function(err) {
+          client.query('SELECT * FROM subscribers WHERE email = ($1);', [email], function(err, res) {
             if (err) throw err;
-            // end connection
-            client.end(function(err) {
-              if (err) throw err;
-              var text = "Successfully subscribed to BBC News Headlines every morning at 9AM.";
-              bot.reply(message, text);
-            });
+            if (res.rows.length == 0) {
+              // insert subscriber query
+              client.query('INSERT INTO subscribers VALUES ($1);', [email], function(err) {
+                if (err) throw err;
+                // end connection
+                client.end(function(err) {
+                  if (err) throw err;
+                  var text = "Successfully subscribed to BBC News Headlines every morning at 9AM.";
+                  bot.reply(message, text);
+                });
+              });
+            }
+            else {
+                var text = "You are already subscribed to BBC News Headlines.";
+                bot.reply(message, text);
+            }
           });
         });
     });
