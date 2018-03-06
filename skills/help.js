@@ -8,7 +8,6 @@ module.exports = function (controller) {
         text += "\n- " + bot.appendMention(message, "headlines") + ": Lists top BBC headlines";
         text += "\n- " + bot.appendMention(message, "subscribe") + ": Subscribe to top BBC headlines every morning";
         text += "\n- " + bot.appendMention(message, "help") + ": spreads the word about my skills";
-        text += "\n- " + bot.appendMention(message, "show [skill]") + ": display the code of the specified skill";
         bot.reply(message, text);
     });
 }
