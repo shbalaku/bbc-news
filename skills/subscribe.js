@@ -7,7 +7,7 @@ var client = methods.createClient();
 
 module.exports = function (controller) {
 
-    controller.hears('(.*) subscribe', 'direct_mention, direct_message', function (bot, message) {
+    controller.hears(['(.*) subscribe','subscribe'], 'direct_mention, direct_message', function (bot, message) {
         var email = message.raw_message.data.personEmail;
         client.connect(function(err) {
           if (err) throw err;
