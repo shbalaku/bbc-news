@@ -9,7 +9,6 @@ module.exports = function (controller) {
 
     controller.hears('subscribe', 'direct_mention, direct_message', function (bot, message) {
         var email = message.raw_message.data.personEmail;
-        console.log(email);
         client.connect(function(err) {
           if (err) throw err;
           // execute query
