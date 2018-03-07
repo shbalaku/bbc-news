@@ -27,8 +27,10 @@ module.exports = function (controller) {
               });
             }
             else {
+              client.end(function(err) {
                 var text = "You are already subscribed to BBC News Headlines.";
                 bot.reply(message, text);
+              });
             }
           });
         });
