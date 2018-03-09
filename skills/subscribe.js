@@ -9,7 +9,7 @@ module.exports = function (controller) {
     controller.hears('opt in', 'direct_mention, direct_message', function (bot, message) {
         var client = methods.createClient();
         var email = message.raw_message.data.personEmail;
-        
+
         client.connect(function(err) {
           if (err) throw err;
           // execute query
@@ -22,7 +22,7 @@ module.exports = function (controller) {
                 // end connection
                 client.end(function(err) {
                   if (err) throw err;
-                  var text = "Successfully subscribed to BBC News Headlines every morning at 9AM.";
+                  var text = "Successfully subscribed to BBC News Headlines every morning at 8:30AM.";
                   bot.reply(message, text);
                 });
               });
