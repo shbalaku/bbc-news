@@ -53,4 +53,6 @@ if (!weekend.includes(day)){
       });
     });
   });
+} else {
+  console.log("I don't post headlines on weekends.");
 }
